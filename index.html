@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Musikkterapi Agder</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      margin: 0;
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(to right, #2e7d32, #a5d6a7);
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+    main {
+      max-width: 960px;
+      margin: auto;
+      padding: 1.5rem;
+    }
+    section {
+      background: white;
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+    #map {
+      height: 500px;
+      width: 100%;
+    }
+    select {
+      font-size: 1rem;
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Musikkterapi Agder</h1>
+    <p>– musikk for mestring, fellesskap og folkehelse –</p>
+  </header>
+  <main>
+    <section>
+      <h2>Velg sted i Agder</h2>
+      <select id="locationSelect">
+        <option value="">-- Velg et sted --</option>
+      </select>
+      <div id="map"></div>
+    </section>
+  </main>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script>
+    const locations = {
+      "Arendal": {
+        coords: [58.461, 8.772],
+        info: "Musikktilbud i Arendal: lavterskel musikkgrupper og individuell musikkterapi. Fokus på mestring og fellesskap."
+      },
+      "Kristiansand": {
+        coords: [58.1599, 8.0182],
+        info: "Musikkterapi i samarbeid med Kilden og frivillige aktører. Brukermedvirkning og fellesskap sentralt."
+      },
+      "Risør": {
+        coords: [58.7197, 9.2369],
+        info: "Tilbud for ungdom og voksne: musikkworkshops og lokal konsertarena."
+      }
+    };
+
+    const map = L.map('map').setView([58.461, 8.772], 8);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const marker = L.marker([0, 0]).addTo(map);
+    marker.setOpacity(0);
+
+    const select = document.getElementById("locationSelect");
+    Object.keys(locations).forEach(place => {
+      const option = document.createElement("option");
+      option.value = place;
+      option.textContent = place;
+      select.appendChild(option);
+    });
+
+    select.addEventListener("change", function() {
+      const place = this.value;
+      if (place && locations[place]) {
+        const loc = locations[place];
+        map.setView(loc.coords, 12);
+        marker.setLatLng(loc.coords);
+        marker.setOpacity(1);
+        marker.bindPopup(`<strong>${place}</strong><br>${loc.info}`).openPopup();
+      }
+    });
+  </script>
+</body>
+</html>
