@@ -57,20 +57,100 @@
   </main>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const locations = {
-      "Arendal": {
-        coords: [58.461, 8.772],
-        info: "Musikktilbud i Arendal: lavterskel musikkgrupper og individuell musikkterapi. Fokus på mestring og fellesskap."
-      },
-      "Kristiansand": {
-        coords: [58.1599, 8.0182],
-        info: "Musikkterapi i samarbeid med Kilden og frivillige aktører. Brukermedvirkning og fellesskap sentralt."
-      },
-      "Risør": {
-        coords: [58.7197, 9.2369],
-        info: "Tilbud for ungdom og voksne: musikkworkshops og lokal konsertarena."
-      }
-    };
+const musicLocations = {
+  "Kristiansand": {
+    coords: [58.1599, 8.0182],
+    info: "Musikktilbud i Kristiansand med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Arendal": {
+    coords: [58.4611, 8.7724],
+    info: "Musikktilbud i Arendal med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Grimstad": {
+    coords: [58.3402, 8.5927],
+    info: "Musikktilbud i Grimstad med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Lillesand": {
+    coords: [58.2473, 8.3775],
+    info: "Musikktilbud i Lillesand med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Risør": {
+    coords: [58.7207, 9.1958],
+    info: "Musikktilbud i Risør med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Tvedestrand": {
+    coords: [58.6222, 8.9287],
+    info: "Musikktilbud i Tvedestrand med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Farsund": {
+    coords: [58.0914, 6.8033],
+    info: "Musikktilbud i Farsund med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Flekkefjord": {
+    coords: [58.2966, 6.6607],
+    info: "Musikktilbud i Flekkefjord med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Mandal": {
+    coords: [58.0282, 7.4606],
+    info: "Musikktilbud i Mandal med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Lyngdal": {
+    coords: [58.1353, 7.0816],
+    info: "Musikktilbud i Lyngdal med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Vennesla": {
+    coords: [58.2767, 7.9737],
+    info: "Musikktilbud i Vennesla med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Evje": {
+    coords: [58.5852, 7.7831],
+    info: "Musikktilbud i Evje med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Åmli": {
+    coords: [58.7749, 8.4867],
+    info: "Musikktilbud i Åmli med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Birkenes": {
+    coords: [58.4298, 8.2231],
+    info: "Musikktilbud i Birkenes med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Bygland": {
+    coords: [58.9191, 7.8084],
+    info: "Musikktilbud i Bygland med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Bykle": {
+    coords: [59.3511, 7.3544],
+    info: "Musikktilbud i Bykle med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Froland": {
+    coords: [58.5167, 8.5833],
+    info: "Musikktilbud i Froland med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Gjerstad": {
+    coords: [58.8992, 9.0034],
+    info: "Musikktilbud i Gjerstad med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Hægebostad": {
+    coords: [58.4876, 7.0905],
+    info: "Musikktilbud i Hægebostad med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Iveland": {
+    coords: [58.4725, 7.8864],
+    info: "Musikktilbud i Iveland med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Valle": {
+    coords: [59.2128, 7.5127],
+    info: "Musikktilbud i Valle med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Vegårshei": {
+    coords: [58.7084, 8.7504],
+    info: "Musikktilbud i Vegårshei med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Åseral": {
+    coords: [58.7273, 7.3218],
+    info: "Musikktilbud i Åseral med fokus på fellesskap, mestring og lokal medvirkning."
+  }
+};
 
     const map = L.map('map').setView([58.461, 8.772], 8);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
