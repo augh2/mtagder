@@ -57,24 +57,25 @@
   </main>
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
   <script>
-    const musicLocations = {
-      "Kristiansand": {
-        coords: [58.1599, 8.0182],
-        info: "Musikktilbud i Kristiansand med fokus på fellesskap, mestring og lokal medvirkning."
-      },
-      "Arendal": {
-        coords: [58.4611, 8.7724],
-        info: "Musikktilbud i Arendal med fokus på fellesskap, mestring og lokal medvirkning."
- "Grimstad": {
+
+  const musicLocations = {
+  "Kristiansand": {
+    coords: [58.1599, 8.0182],
+    info: "Musikktilbud i Kristiansand med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Arendal": {
+    coords: [58.4611, 8.7724],
+    info: "Musikktilbud i Arendal med fokus på fellesskap, mestring og lokal medvirkning."
+  },
+  "Grimstad": {
     coords: [58.3402, 8.5927],
     info: "Musikktilbud i Grimstad med fokus på fellesskap, mestring og lokal medvirkning."
   },
-      },
-      "Lillesand": {
-        coords: [58.2473, 8.3775],
-        info: "Musikktilbud i Lillesand med fokus på fellesskap, mestring og lokal medvirkning."
-      }
-    };
+  "Lillesand": {
+    coords: [58.2473, 8.3775],
+    info: "Musikktilbud i Lillesand med fokus på fellesskap, mestring og lokal medvirkning."
+  }
+};
 
     const map = L.map('map').setView([58.461, 8.772], 8);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
